@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  archlinux:
+    container_name: arch
+    image: localhost/selfarch
+    ports:
+      - "2333:22/tcp"
+    environment:
+      TZ: 'Asia/Shanghai'
+    volumes:
+      - '/var/cache/pacman/pkg:/var/cache/pacman/pkg'
+      - '/root/Container:/root/Container'
+        #      - '/etc/passwd:/etc/passwd:ro'
+        #      - '/etc/shadow:/etc/shadow:ro'
+        #      - '/root/.ssh/authorized_keys:/root/.ssh/authorized_keys:ro'
+    restart: always
+
+networks:
+    my-net:
+        external:
+            name: my-net
